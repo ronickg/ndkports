@@ -27,7 +27,7 @@ jobs:
         uses: nttld/setup-ndk@v1
         with:
           ndk-version: r25c
-          local-cache: true
+          local-cache: false
 
       - name: Get project information
         id: get-projects
