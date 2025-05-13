@@ -41,7 +41,7 @@ extra["projectConfigs"] = mapOf(
         "libName" to "blst"
     ),
     "sodium" to mapOf(
-        "libVersion" to "1.0.19",
+        "libVersion" to "1.0.20",
         "libName" to "Sodium"
     )
 )
