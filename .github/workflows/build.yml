@@ -3,8 +3,6 @@ name: Build NDK Ports
 on:
   push:
     branches: [release]
-  pull_request:
-    branches: [release]
   workflow_dispatch:
 
 jobs:
