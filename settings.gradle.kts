@@ -18,4 +18,4 @@ pluginManagement {
 // include("zlib")
 // include("libpng")
 // include("blst")
-// include("sodium")
+include("sodium")
