@@ -94,6 +94,7 @@ val buildTask = tasks.register<AdHocPortTask>("buildPort") {
                 "-Wno-error=array-parameter",
                 "-Wl,-Bsymbolic",
                 "-Wl,--version-script=${versionScript.absolutePath}",
+                "-Wl,-z,max-page-size=16384",  // 16KB page support
                 serverC,
                 assemblyS
             )

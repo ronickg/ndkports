@@ -134,7 +134,8 @@ val buildTask = tasks.register<AdHocPortTask>("buildPort") {
                 "--prefix=${installDirectory.absolutePath}",
                 "--openssldir=${installDirectory.absolutePath}",
                 "no-sctp",
-                "shared"
+                "shared",
+                "-Wl,-z,max-page-size=16384"
             )
 
             env("ANDROID_NDK", toolchain.ndk.path.absolutePath)

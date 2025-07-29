@@ -62,6 +62,7 @@ abstract class CMakePortTask : PortTask() {
                 "-DCMAKE_INSTALL_PREFIX=${installDirectory.absolutePath}",
                 "-DANDROID_ABI=${toolchain.abi.abiName}",
                 "-DANDROID_API_LEVEL=${toolchain.api}",
+                "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON",
                 "-GNinja",
                 sourceDirectory.get().asFile.absolutePath,
             ) + builder.cmd, buildDirectory, builder.env

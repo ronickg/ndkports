@@ -74,6 +74,10 @@ abstract class MesonPortTask @Inject constructor(objects: ObjectFactory) :
             cpp = '${toolchain.clangxx}'
             strip = '${toolchain.strip}'
 
+            [properties]
+            c_link_args = ['-Wl,-z,max-page-size=16384']
+            cpp_link_args = ['-Wl,-z,max-page-size=16384']
+
             [host_machine]
             system = 'android'
             cpu_family = '$cpuFamily'
