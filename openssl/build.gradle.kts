@@ -14,13 +14,14 @@ val configs = rootProject.extra["projectConfigs"] as Map<String, Map<String, Str
 val projectConfig = configs[project.name] ?: error("No configuration found for project ${project.name}")
 
 val libVersion = projectConfig["libVersion"]!!
+val snapshotVersion = projectConfig["snapshotVersion"] ?: ""
 
 val opensslDownloadUrl = "https://github.com/openssl/openssl/releases/download/openssl-${libVersion}/openssl-${libVersion}.tar.gz"
 val opensslSha256Url = "${opensslDownloadUrl}.sha256"
 val opensslAscUrl = "${opensslDownloadUrl}.asc"
 
 group = "io.github.ronickg"
-version = "$libVersion"
+version = if (snapshotVersion.isNotEmpty()) "$libVersion-$snapshotVersion" else libVersion
 
 plugins {
     id("maven-publish")
