@@ -66,9 +66,14 @@ tasks.register("exportProjectInfo") {
             val configs = rootProject.extra["projectConfigs"] as Map<String, Map<String, String>>
             val projectConfig = configs[proj.name] ?: error("No configuration found for project ${proj.name}")
 
+            // Compute the actual version including snapshot suffix
+            val libVersion = projectConfig["libVersion"]!!
+            val snapshotVersion = projectConfig["snapshotVersion"] ?: ""
+            val actualVersion = if (snapshotVersion.isNotEmpty()) "$libVersion-$snapshotVersion" else libVersion
+
             mapOf(
                 "name" to proj.name,
-                "version" to projectConfig["libVersion"],
+                "version" to actualVersion,
                 "libName" to projectConfig["libName"]
             )
         }
