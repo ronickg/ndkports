@@ -11,12 +11,13 @@ val projectConfig = configs[project.name] ?: error("No configuration found for p
 val zlibConfig = configs["zlib"] ?: error("No configuration found for Zlib")
 
 val libVersion = projectConfig["libVersion"]!!
+val snapshotVersion = projectConfig["snapshotVersion"] ?: ""
 val zlibVersion = zlibConfig["libVersion"]!!
 
 val libpngDownloadUrl = "https://downloads.sourceforge.net/project/libpng/libpng16/$libVersion/libpng-$libVersion.tar.xz"
 
 group = "io.github.ronickg"
-version = "$libVersion"
+version = if (snapshotVersion.isNotEmpty()) "$libVersion-$snapshotVersion" else libVersion
 
 plugins {
     id("maven-publish")

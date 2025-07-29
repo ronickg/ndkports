@@ -12,11 +12,12 @@ val configs = rootProject.extra["projectConfigs"] as Map<String, Map<String, Str
 val projectConfig = configs[project.name] ?: error("No configuration found for project ${project.name}")
 
 val libVersion = projectConfig["libVersion"]!!
+val snapshotVersion = projectConfig["snapshotVersion"] ?: ""
 
 val jsoncppDownloadUrl = "https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/${libVersion}.tar.gz"
 
 group = "io.github.ronickg"
-version = "$libVersion"
+version = if (snapshotVersion.isNotEmpty()) "$libVersion-$snapshotVersion" else libVersion
 
 plugins {
     id("maven-publish")

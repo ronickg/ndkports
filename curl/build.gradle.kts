@@ -11,12 +11,13 @@ val projectConfig = configs[project.name] ?: error("No configuration found for p
 val opensslConfig = configs["openssl"] ?: error("No configuration found for OpenSSL")
 
 val libVersion = projectConfig["libVersion"]!!
+val snapshotVersion = projectConfig["snapshotVersion"] ?: ""
 val opensslVersion = opensslConfig["libVersion"]!!
 
 val libpngDownloadUrl = "https://github.com/curl/curl/releases/download/curl-${libVersion.replace(".", "_")}/curl-$libVersion.tar.gz"
 
 group = "io.github.ronickg"
-version = "$libVersion"
+version = if (snapshotVersion.isNotEmpty()) "$libVersion-$snapshotVersion" else libVersion
 
 plugins {
     id("maven-publish")
