@@ -10,7 +10,7 @@ pluginManagement {
     }
 }
 
-// include("curl")
+include("curl")
 // include("openssl")
 // include("utf8proc")
 // include("gmp")
@@ -18,4 +18,4 @@ pluginManagement {
 // include("zlib")
 // include("libpng")
 // include("blst")
-include("sodium")
+// include("sodium")

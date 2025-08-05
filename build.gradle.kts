@@ -27,7 +27,8 @@ extra["projectConfigs"] = mapOf(
     ),
     "curl" to mapOf(
         "libVersion" to "8.10.1",
-        "libName" to "Curl"
+        "libName" to "Curl",
+        "snapshotVersion" to "1"
     ),
     "utf8proc" to mapOf(
         "libVersion" to "2.9.0",
