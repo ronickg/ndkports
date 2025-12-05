@@ -9,7 +9,7 @@ repositories {
 // Define project configurations
 extra["projectConfigs"] = mapOf(
     "openssl" to mapOf(
-        "libVersion" to "3.3.2",
+        "libVersion" to "3.6.0",
         "libName" to "OpenSSL",
         "snapshotVersion" to "1"
     ),

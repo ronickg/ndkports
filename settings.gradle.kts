@@ -10,8 +10,8 @@ pluginManagement {
     }
 }
 
-include("curl")
-// include("openssl")
+// include("curl")
+include("openssl")
 // include("utf8proc")
 // include("gmp")
 // include("jsoncpp")
