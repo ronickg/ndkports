@@ -11,7 +11,7 @@ extra["projectConfigs"] = mapOf(
     "openssl" to mapOf(
         "libVersion" to "3.6.0",
         "libName" to "OpenSSL",
-        "snapshotVersion" to "1"
+        "snapshotVersion" to "2"
     ),
     "jsoncpp" to mapOf(
         "libVersion" to "1.9.5",
