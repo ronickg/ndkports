@@ -12,6 +12,7 @@ pluginManagement {
 
 include("curl")
 include("openssl")
+include("openssl-static")
 include("utf8proc")
 include("gmp")
 include("jsoncpp")
