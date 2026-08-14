@@ -9,6 +9,7 @@ on:
         type: choice
         options:
           - openssl
+          - openssl-static
           - sodium
           - curl
           - utf8proc

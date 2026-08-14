@@ -120,3 +120,5 @@ fabric.properties
 /sodium/*
 !/sodium/build.gradle.kts
 !/sodium/android-aar.sh
+/openssl-static/*
+!/openssl-static/build.gradle.kts
