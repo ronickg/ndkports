@@ -165,6 +165,18 @@ val buildTask = tasks.register<AdHocPortTask>("buildPort") {
 }
 
 tasks.prefabPackage {
+    // Not the project name: PrefabPackageBuilder derives the AAR's manifest
+    // package from this as io.github.ronickg.<name>, and a hyphen there is not
+    // a valid Java identifier, so AGP rejects the AAR outright:
+    //
+    //   Package 'io.github.ronickg.openssl-static' from AndroidManifest.xml is
+    //   not a valid Java package name
+    //
+    // The Maven artifactId still comes from the project name, so the
+    // io.github.ronickg:openssl-static coordinate is unaffected. Consumers do
+    // find_package(opensslstatic) and link opensslstatic::crypto.
+    packageName.set("opensslstatic")
+
     version.set(CMakeCompatibleVersion.parse(libVersion))
 
     licensePath.set("LICENSE.txt")
