@@ -96,6 +96,7 @@ val buildTask = tasks.register<AdHocPortTask>("buildPort") {
                 "-Wl,-Bsymbolic",
                 "-Wl,--version-script=${versionScript.absolutePath}",
                 "-Wl,-z,max-page-size=16384",  // 16KB page support
+                "-Wl,-z,common-page-size=16384",
                 serverC,
                 assemblyS
             )

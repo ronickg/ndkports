@@ -106,7 +106,7 @@ val buildTask = tasks.register<AdHocPortTask>("buildPort") {
             env("PATH", "${toolchain.binDir}:${System.getenv("PATH")}")
             env("TARGET_ARCH", targetArch)
             env("CFLAGS", cflags)
-            env("LDFLAGS", "-Wl,-z,max-page-size=16384")
+            env("LDFLAGS", "-Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384")
 
             // Set correct NDK platform version for 64-bit architectures
             if (toolchain.abi.abiName == "arm64-v8a" || toolchain.abi.abiName == "x86_64") {
@@ -140,7 +140,7 @@ val buildTask = tasks.register<AdHocPortTask>("buildPort") {
             env("PATH", "${toolchain.binDir}:${System.getenv("PATH")}")
             env("TARGET_ARCH", targetArch)
             env("CFLAGS", cflags)
-            env("LDFLAGS", "-Wl,-z,max-page-size=16384")
+            env("LDFLAGS", "-Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384")
             env("LIBSODIUM_FULL_BUILD", "1")
 
             // Set correct NDK platform version for 64-bit architectures
