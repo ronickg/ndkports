@@ -140,6 +140,7 @@ val buildTask = tasks.register<AdHocPortTask>("buildPort") {
                 // must be position independent
                 "-fPIC",
                 "-Wl,-z,max-page-size=16384",
+                "-Wl,-z,common-page-size=16384",
                 "-fstack-protector-strong",
                 "-D_FORTIFY_SOURCE=2"
             )

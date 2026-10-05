@@ -56,7 +56,7 @@ abstract class AutoconfPortTask : PortTask() {
                 "CXX" to toolchain.clangxx.absolutePath,
                 "RANLIB" to toolchain.ranlib.absolutePath,
                 "STRIP" to toolchain.strip.absolutePath,
-                "LDFLAGS" to "-Wl,-z,max-page-size=16384",
+                "LDFLAGS" to "-Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384",
                 "PATH" to "${toolchain.binDir}:${System.getenv("PATH")}"
             ).apply { putAll(builder.env) })
 
