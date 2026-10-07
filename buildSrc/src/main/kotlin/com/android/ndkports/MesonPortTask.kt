@@ -65,6 +65,8 @@ abstract class MesonPortTask @Inject constructor(objects: ObjectFactory) :
             Abi.X86_64 -> "x86_64"
         }
 
+        // Meson >= 0.56 reads link args from [built-in options].
+        // [properties] is deprecated and was missing common-page-size.
         val crossFile = workingDirectory.resolve("cross_file.txt").apply {
             writeText(
                 """
@@ -74,9 +76,9 @@ abstract class MesonPortTask @Inject constructor(objects: ObjectFactory) :
             cpp = '${toolchain.clangxx}'
             strip = '${toolchain.strip}'
 
-            [properties]
-            c_link_args = ['-Wl,-z,max-page-size=16384']
-            cpp_link_args = ['-Wl,-z,max-page-size=16384']
+            [built-in options]
+            c_link_args = ['-Wl,-z,max-page-size=16384', '-Wl,-z,common-page-size=16384']
+            cpp_link_args = ['-Wl,-z,max-page-size=16384', '-Wl,-z,common-page-size=16384']
 
             [host_machine]
             system = 'android'

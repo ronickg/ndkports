@@ -54,6 +54,12 @@ abstract class CMakePortTask : PortTask() {
             toolchain.ndk.path.resolve("build/cmake/android.toolchain.cmake")
 
         buildDirectory.mkdirs()
+        // r25c ignores ANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES. r27 sets
+        // max-page-size for 64-bit ABIs only, and no NDK sets
+        // common-page-size, so the GNU_RELRO end stays 4 KB aligned.
+        // The toolchain keeps these cache values and prepends its own flags.
+        val pageSizeFlags =
+            "-Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384"
         executeSubprocess(
             listOf(
                 "cmake",
@@ -63,6 +69,9 @@ abstract class CMakePortTask : PortTask() {
                 "-DANDROID_ABI=${toolchain.abi.abiName}",
                 "-DANDROID_API_LEVEL=${toolchain.api}",
                 "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON",
+                "-DCMAKE_SHARED_LINKER_FLAGS=$pageSizeFlags",
+                "-DCMAKE_MODULE_LINKER_FLAGS=$pageSizeFlags",
+                "-DCMAKE_EXE_LINKER_FLAGS=$pageSizeFlags",
                 "-GNinja",
                 sourceDirectory.get().asFile.absolutePath,
             ) + builder.cmd, buildDirectory, builder.env
