@@ -10,7 +10,7 @@ val projectConfig = configs[project.name] ?: error("No configuration found for p
 
 val libVersion = projectConfig["libVersion"]!!
 val snapshotVersion = projectConfig["snapshotVersion"] ?: ""
-val downloadUrl = "https://gmplib.org/download/gmp/gmp-$libVersion.tar.xz"
+val downloadUrl = "https://ftp.gnu.org/gnu/gmp/gmp-$libVersion.tar.xz"
 
 group = "io.github.ronickg"
 version = if (snapshotVersion.isNotEmpty()) "$libVersion-$snapshotVersion" else libVersion
